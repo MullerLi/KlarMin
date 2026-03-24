@@ -1,7 +1,7 @@
 import os
 from fontTools.ttLib import TTFont
 
-font_path = "c:/Users/125B/UDminchoModified/KlarMin-R.ttf"
+font_path = "c:/Users/125B/UDminchoModified/KlarMin-Regular.ttf"
 font = TTFont(font_path)
 name_table = font['name']
 
