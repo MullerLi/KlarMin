@@ -1,0 +1,24 @@
+NameID: 1, PlatformID: 3, PlatEncID: 1, LangID: 1033
+Current String: KlarMin
+---
+NameID: 2, PlatformID: 3, PlatEncID: 1, LangID: 1033
+Current String: Regular
+---
+NameID: 3, PlatformID: 3, PlatEncID: 1, LangID: 1033
+Current String: KlarMin-Regular;2026
+---
+NameID: 4, PlatformID: 3, PlatEncID: 1, LangID: 1033
+Current String: KlarMin Regular
+---
+NameID: 6, PlatformID: 3, PlatEncID: 1, LangID: 1033
+Current String: KlarMin-Regular
+---
+NameID: 1, PlatformID: 3, PlatEncID: 1, LangID: 1041
+Current String: KlarMin
+---
+NameID: 2, PlatformID: 3, PlatEncID: 1, LangID: 1041
+Current String: Regular
+---
+NameID: 1, PlatformID: 3, PlatEncID: 1, LangID: 2052
+Current String: KlarMin
+---

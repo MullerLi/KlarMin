@@ -1,0 +1,43 @@
+Target: KlarMinTC-Regular-GenKiMerriMix-ItalicAlt-v3.ttf
+Unicode cmap count: 16770
+Glyph count: 17997
+
+Mapped empty glyphs:
+  U+0000	uni0000	UNNAMED
+  U+000D	uni000D	UNNAMED
+  U+0020	space	SPACE
+  U+00A0	uni00A0	NO-BREAK SPACE
+  U+2002	uni2002	EN SPACE
+  U+2003	uni2003	EM SPACE
+  U+2009	uni2009	THIN SPACE
+  U+3000	uni3000	IDEOGRAPHIC SPACE
+
+[GenKiMin2TW-R] printable chars present in ref but missing in target: 19011
+  CJK Unified Ideographs: 7513
+  CJK Unified Ideographs Ext A: 6318
+  Other: 2470
+  Hangul Syllables: 2350
+  CJK Compatibility Ideographs: 266
+  Hangul Compatibility Jamo: 94
+  No obvious high-priority printable additions.
+
+[Merriweather-Regular] printable chars present in ref but missing in target: 0
+  No obvious high-priority printable additions.
+
+[Merriweather-Italic] printable chars present in ref but missing in target: 0
+  No obvious high-priority printable additions.
+
+[TRWUDMincho-R] printable chars present in ref but missing in target: 0
+  No obvious high-priority printable additions.
+
+[GenYoMin2-R#0] printable chars present in ref but missing in target: 19011
+  CJK Unified Ideographs: 7513
+  CJK Unified Ideographs Ext A: 6318
+  Other: 2470
+  Hangul Syllables: 2350
+  CJK Compatibility Ideographs: 266
+  Hangul Compatibility Jamo: 94
+  No obvious high-priority printable additions.
+
+[Union of all refs] high-priority candidate chars missing in target:
+  none
