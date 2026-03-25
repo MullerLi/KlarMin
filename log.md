@@ -16,7 +16,7 @@ Current release goal:
 
 Latest release font kept in the root:
 
-- `KlarMinTC-Regular-GenKiMerriMix-ItalicAlt-v3.ttf`
+- `KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf`
 
 This is the font a future agent should treat as the current canonical output unless the user explicitly says otherwise.
 
@@ -111,6 +111,81 @@ Cleanup result:
 - Build scripts were moved to `tools`.
 - Audit reports, logs, and candidate lists were moved to `reports`.
 
+### 6. Windows line spacing repair
+
+After the punctuation and symbol merge work, the font started feeling too loose in single-line layout.
+
+Root cause found during inspection:
+
+- `hhea` and `OS/2` typo metrics were still at the original KlarMinTC values: `2014 / -560 / 0`.
+- `OS/2.usWinAscent/usWinDescent` in `v7` had been expanded to `4018 / 1116`.
+- This matched extreme symbol bounding boxes, but it also made Windows single-line spacing much larger than the original BLZ / KlarMin / TRWUDMincho feel.
+
+Repair approach:
+
+- Compare the current font against `archive/fonts/KlarMinTC-Regular.ttf` and `referenceFont/TRWUDMincho-R.ttf`.
+- Keep `hhea` and typo metrics unchanged.
+- Restore Windows metrics to the original KlarMinTC values `2014 / 560`.
+
+Result:
+
+- `KlarMinTC-Regular-GenKiMerriMix-PunctFix-v8-linespacingfix.ttf` was generated.
+- Windows single-line spacing should now be much closer to the original base font.
+- A diagnostic outlier list was saved to `reports/line_spacing_outliers-v7.txt`.
+
+Implementation script added:
+
+- `tools/fix_line_spacing_metrics.py`
+
+### 7. Targeted oversized symbol rollback
+
+After the line spacing fix, the user identified a smaller set of symbols that still looked too large, too heavy, or too tall relative to the surrounding text.
+
+User-reported problem glyphs:
+
+- `…`
+- `–`
+- `—`
+- `℅`
+- `← ↑ → ↓`
+- `∕`
+- `√`
+- `∞`
+- `∫`
+- `≠`
+- `“ ” ‘ ’`
+
+Inspection result:
+
+- These glyphs in the merged font were much larger than the original base glyphs.
+- Many of them had widths or bounding boxes close to 2x the original KlarMinTC values.
+- For this batch, direct rollback to the base glyphs was safer than trying to rescale each merged glyph manually.
+
+Repair approach:
+
+- Use `archive/fonts/KlarMinTC-Regular.ttf` as the donor font.
+- Copy only the user-reported glyph set back into the latest line-spacing-fixed build.
+- Preserve the rest of the merged font unchanged.
+
+Result:
+
+- `KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf` was generated.
+- The listed glyphs now match the original base font metrics and outlines.
+
+Implementation script added:
+
+- `tools/replace_symbol_glyphs.py`
+
+### 8. Root cleanup refresh after v9
+
+The root was cleaned again after generating the new repair builds.
+
+Current cleanup result:
+
+- Keep only `KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf` in the root as the latest release candidate.
+- Move older generated outputs such as `ItalicAlt-v3`, `v7`, and `v8` into `archive/fonts`.
+- Keep user assets like `display.JPG`, `測試排版文字.docx`, and `jf 7000 當務字集 v0.9.xlsx` in the root.
+
 ## Folder Layout Rules
 
 These rules should be preserved unless the user asks for a different structure.
@@ -144,6 +219,8 @@ Current important scripts:
 - `tools/add_priority_missing_chars_ff.py`
 - `tools/add_priority_missing_chars.py`
 - `tools/audit_font_coverage.py`
+- `tools/fix_line_spacing_metrics.py`
+- `tools/replace_symbol_glyphs.py`
 
 ### reports
 
@@ -180,6 +257,8 @@ Useful commands from the project root:
 ```powershell
 python tools\add_priority_missing_chars.py
 python tools\audit_font_coverage.py --target KlarMinTC-Regular-GenKiMerriMix-ItalicAlt-v3.ttf --report reports\font_coverage_audit-v3.txt
+python tools\fix_line_spacing_metrics.py --target KlarMinTC-Regular-GenKiMerriMix-PunctFix-v7-metadata-winfix.ttf --reference archive\fonts\KlarMinTC-Regular.ttf --output KlarMinTC-Regular-GenKiMerriMix-PunctFix-v8-linespacingfix.ttf
+python tools\replace_symbol_glyphs.py --target KlarMinTC-Regular-GenKiMerriMix-PunctFix-v8-linespacingfix.ttf --donor archive\fonts\KlarMinTC-Regular.ttf --output KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf
 ```
 
 Important note:
@@ -256,11 +335,16 @@ Rule:
 As of the end of this conversation:
 
 - High-priority printable gaps from the current reference fonts are resolved.
+- The current canonical output is now `KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf`.
+- Windows single-line spacing was normalized by restoring `OS/2.usWinAscent/usWinDescent` from `4018 / 1116` back to `2014 / 560`.
+- A targeted set of oversized punctuation and symbols was rolled back to the original KlarMinTC donor glyphs.
+- `reports/line_spacing_outliers-v7.txt` contains the first-pass list of glyphs that exceeded the original base line box during the audit.
 - Remaining missing characters are mostly optional large ranges from GenKi / GenYo:
   - CJK Unified Ideographs
   - CJK Ext A
   - Hangul
   - CJK Compatibility Ideographs
+- Some glyphs outside the original base bbox still remain and have not yet been fully audited for 1.0 release quality.
 
 This means future work is now more about scope choice than bug fixing.
 
@@ -310,8 +394,7 @@ A future agent could make the build pipeline automatically:
 If you are a future agent entering this project, do this first:
 
 1. Read this file.
-2. Treat `KlarMinTC-Regular-GenKiMerriMix-ItalicAlt-v3.ttf` as the current canonical font.
-3. Check `reports/font_coverage_audit-v3.txt` before deciding what to add next.
+2. Treat `KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf` as the current canonical font.
+3. Check `reports/font_coverage_audit-v3.txt` and `reports/line_spacing_outliers-v7.txt` before deciding what to add next.
 4. Use the scripts in `tools/` rather than rebuilding logic from memory.
 5. Keep the root clean when you are done.
-
