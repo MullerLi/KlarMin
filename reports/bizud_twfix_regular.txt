@@ -1,0 +1,280 @@
+Target: BIZUDPMincho-SourceSerifMix-Regular.ttf
+Donor: referenceFont\GenYoMin2-R.ttc
+Donor index: 0
+Preflight
+  target_upm=2048
+  donor_upm=1000
+  target_outline=glyf
+  donor_outline=glyf
+  target_yMinMax=-589/4210
+  donor_yMinMax=-549/2042
+Feature check
+  GSUB=['aalt', 'ccmp', 'dlig', 'dnom', 'expt', 'frac', 'fwid', 'hojo', 'hwid', 'jp78', 'jp83', 'jp90', 'liga', 'nalt', 'nlck', 'numr', 'ruby', 'sups', 'trad', 'vert', 'vkna', 'vrt2', 'zero']
+  GPOS=[]
+  problematic_spacing_features=none
+Summary
+  replaced=41
+  added=89
+  skipped=0
+Per-codepoint result
+U+3001 char=、 category=punct.must action=replaced target=uni3001 donor=uni3001 reason=-
+U+3002 char=。 category=punct.must action=replaced target=uni3002 donor=uni3002 reason=-
+U+3008 char=〈 category=punct.must action=replaced target=uni3008 donor=angleleft reason=-
+U+3009 char=〉 category=punct.must action=replaced target=uni3009 donor=angleright reason=-
+U+300A char=《 category=punct.must action=replaced target=uni300A donor=uni300A reason=-
+U+300B char=》 category=punct.must action=replaced target=uni300B donor=uni300B reason=-
+U+300C char=「 category=punct.must action=replaced target=uni300C donor=uni300C reason=-
+U+300D char=」 category=punct.must action=replaced target=uni300D donor=uni300D reason=-
+U+300E char=『 category=punct.must action=replaced target=uni300E donor=uni300E reason=-
+U+300F char=』 category=punct.must action=replaced target=uni300F donor=uni300F reason=-
+U+3010 char=【 category=punct.must action=replaced target=uni3010 donor=uni3010 reason=-
+U+3011 char=】 category=punct.must action=replaced target=uni3011 donor=uni3011 reason=-
+U+FF01 char=！ category=punct.must action=replaced target=uniFF01 donor=uniFF01 reason=-
+U+FF08 char=（ category=punct.must action=replaced target=uniFF08 donor=uniFF08 reason=-
+U+FF09 char=） category=punct.must action=replaced target=uniFF09 donor=uniFF09 reason=-
+U+FF0C char=， category=punct.must action=replaced target=uniFF0C donor=uniFF0C reason=-
+U+FF1A char=： category=punct.must action=replaced target=uniFF1A donor=uniFF1A reason=-
+U+FF1B char=； category=punct.must action=replaced target=uniFF1B donor=uniFF1B reason=-
+U+FF1F char=？ category=punct.must action=replaced target=uniFF1F donor=uniFF1F reason=-
+U+2014 char=— category=punct.must action=replaced target=emdash donor=emdash reason=-
+U+2026 char=… category=punct.must action=replaced target=ellipsis donor=ellipsis reason=-
+U+00B7 char=· category=punct.must action=replaced target=periodcentered donor=periodcentered reason=-
+U+3014 char=〔 category=punct.recommended action=replaced target=uni3014 donor=uni3014 reason=-
+U+3015 char=〕 category=punct.recommended action=replaced target=uni3015 donor=uni3015 reason=-
+U+3016 char=〖 category=punct.recommended action=replaced target=uni3016 donor=uni3016 reason=-
+U+3017 char=〗 category=punct.recommended action=replaced target=uni3017 donor=uni3017 reason=-
+U+FF0E char=． category=punct.recommended action=replaced target=uniFF0E donor=uniFF0E reason=-
+U+FF3B char=［ category=punct.recommended action=replaced target=uniFF3B donor=uniFF3B reason=-
+U+FF3D char=］ category=punct.recommended action=replaced target=uniFF3D donor=uniFF3D reason=-
+U+FF5E char=～ category=punct.recommended action=replaced target=uniFF5E donor=uni301C reason=-
+U+2015 char=― category=punct.recommended action=replaced target=uni2015 donor=uni2015 reason=-
+U+2027 char=‧ category=punct.recommended action=added target=uni2027 donor=bullet reason=-
+U+30FB char=・ category=punct.recommended action=replaced target=uni30FB donor=uni30FB reason=-
+U+301D char=〝 category=punct.optional action=replaced target=uni301D donor=uni301D reason=-
+U+301E char=〞 category=punct.optional action=added target=uni301E donor=uni301E reason=-
+U+FF5B char=｛ category=punct.optional action=replaced target=uniFF5B donor=uniFF5B reason=-
+U+FF5D char=｝ category=punct.optional action=replaced target=uniFF5D donor=uniFF5D reason=-
+U+2018 char=‘ category=punct.optional action=replaced target=quoteleft donor=uni02BB reason=-
+U+2019 char=’ category=punct.optional action=replaced target=quoteright donor=quoteright reason=-
+U+201C char=“ category=punct.optional action=replaced target=quotedblleft donor=quotedblleft reason=-
+U+201D char=” category=punct.optional action=replaced target=quotedblright donor=quotedblright reason=-
+U+FE30 char=︰ category=punct.vertical action=added target=uniFE30 donor=uniFE30 reason=-
+U+FE31 char=︱ category=punct.vertical action=added target=uniFE31 donor=uniFE31 reason=-
+U+FE32 char=︲ category=punct.vertical action=added target=uniFE32 donor=uniFE32 reason=-
+U+FE33 char=︳ category=punct.vertical action=added target=uniFE33 donor=uniFE33 reason=-
+U+FE35 char=︵ category=punct.vertical action=added target=uniFE35 donor=uniFE35 reason=-
+U+FE36 char=︶ category=punct.vertical action=added target=uniFE36 donor=uniFE36 reason=-
+U+FE37 char=︷ category=punct.vertical action=added target=uniFE37 donor=uniFE37 reason=-
+U+FE38 char=︸ category=punct.vertical action=added target=uniFE38 donor=uniFE38 reason=-
+U+FE39 char=︹ category=punct.vertical action=added target=uniFE39 donor=uniFE39 reason=-
+U+FE3A char=︺ category=punct.vertical action=added target=uniFE3A donor=uniFE3A reason=-
+U+FE3B char=︻ category=punct.vertical action=added target=uniFE3B donor=uniFE3B reason=-
+U+FE3C char=︼ category=punct.vertical action=added target=uniFE3C donor=uniFE3C reason=-
+U+FE3D char=︽ category=punct.vertical action=added target=uniFE3D donor=uniFE3D reason=-
+U+FE3E char=︾ category=punct.vertical action=added target=uniFE3E donor=uniFE3E reason=-
+U+FE3F char=︿ category=punct.vertical action=added target=uniFE3F donor=uniFE3F reason=-
+U+FE40 char=﹀ category=punct.vertical action=added target=uniFE40 donor=uniFE40 reason=-
+U+FE41 char=﹁ category=punct.vertical action=added target=uniFE41 donor=uniFE41 reason=-
+U+FE42 char=﹂ category=punct.vertical action=added target=uniFE42 donor=uniFE42 reason=-
+U+FE43 char=﹃ category=punct.vertical action=added target=uniFE43 donor=uniFE43 reason=-
+U+FE44 char=﹄ category=punct.vertical action=added target=uniFE44 donor=uniFE44 reason=-
+U+FE4F char=﹏ category=punct.vertical action=added target=uniFE4F donor=uniFE4F reason=-
+U+3105 char=ㄅ category=bopo.onset action=added target=uni3105 donor=uni3105 reason=-
+U+3106 char=ㄆ category=bopo.onset action=added target=uni3106 donor=uni3106 reason=-
+U+3107 char=ㄇ category=bopo.onset action=added target=uni3107 donor=uni3107 reason=-
+U+3108 char=ㄈ category=bopo.onset action=added target=uni3108 donor=uni3108 reason=-
+U+3109 char=ㄉ category=bopo.onset action=added target=uni3109 donor=uni3109 reason=-
+U+310A char=ㄊ category=bopo.onset action=added target=uni310A donor=uni310A reason=-
+U+310B char=ㄋ category=bopo.onset action=added target=uni310B donor=uni310B reason=-
+U+310C char=ㄌ category=bopo.onset action=added target=uni310C donor=uni310C reason=-
+U+310D char=ㄍ category=bopo.onset action=added target=uni310D donor=uni310D reason=-
+U+310E char=ㄎ category=bopo.onset action=added target=uni310E donor=uni310E reason=-
+U+310F char=ㄏ category=bopo.onset action=added target=uni310F donor=uni310F reason=-
+U+3110 char=ㄐ category=bopo.onset action=added target=uni3110 donor=uni3110 reason=-
+U+3111 char=ㄑ category=bopo.onset action=added target=uni3111 donor=uni3111 reason=-
+U+3112 char=ㄒ category=bopo.onset action=added target=uni3112 donor=uni3112 reason=-
+U+312B char=ㄫ category=bopo.onset action=added target=uni312B donor=uni312B reason=-
+U+31A0 char=ㆠ category=bopo.onset action=added target=uni31A0 donor=uni31A0 reason=-
+U+31A1 char=ㆡ category=bopo.onset action=added target=uni31A1 donor=uni31A1 reason=-
+U+31A2 char=ㆢ category=bopo.onset action=added target=uni31A2 donor=uni31A2 reason=-
+U+31A3 char=ㆣ category=bopo.onset action=added target=uni31A3 donor=uni31A3 reason=-
+U+3113 char=ㄓ category=bopo.empty_rhyme_onset action=added target=uni3113 donor=uni3113 reason=-
+U+3114 char=ㄔ category=bopo.empty_rhyme_onset action=added target=uni3114 donor=uni3114 reason=-
+U+3115 char=ㄕ category=bopo.empty_rhyme_onset action=added target=uni3115 donor=uni3115 reason=-
+U+3116 char=ㄖ category=bopo.empty_rhyme_onset action=added target=uni3116 donor=uni3116 reason=-
+U+3117 char=ㄗ category=bopo.empty_rhyme_onset action=added target=uni3117 donor=uni3117 reason=-
+U+3118 char=ㄘ category=bopo.empty_rhyme_onset action=added target=uni3118 donor=uni3118 reason=-
+U+3119 char=ㄙ category=bopo.empty_rhyme_onset action=added target=uni3119 donor=uni3119 reason=-
+U+3127 char=ㄧ category=bopo.medial action=added target=uni3127 donor=uni3127 reason=-
+U+3128 char=ㄨ category=bopo.medial action=added target=uni3128 donor=uni3128 reason=-
+U+3129 char=ㄩ category=bopo.medial action=added target=uni3129 donor=uni3129 reason=-
+U+311A char=ㄚ category=bopo.rhyme action=added target=uni311A donor=uni311A reason=-
+U+311B char=ㄛ category=bopo.rhyme action=added target=uni311B donor=uni311B reason=-
+U+311C char=ㄜ category=bopo.rhyme action=added target=uni311C donor=uni311C reason=-
+U+311D char=ㄝ category=bopo.rhyme action=added target=uni311D donor=uni311D reason=-
+U+311E char=ㄞ category=bopo.rhyme action=added target=uni311E donor=uni311E reason=-
+U+311F char=ㄟ category=bopo.rhyme action=added target=uni311F donor=uni311F reason=-
+U+3120 char=ㄠ category=bopo.rhyme action=added target=uni3120 donor=uni3120 reason=-
+U+3121 char=ㄡ category=bopo.rhyme action=added target=uni3121 donor=uni3121 reason=-
+U+3122 char=ㄢ category=bopo.rhyme action=added target=uni3122 donor=uni3122 reason=-
+U+3123 char=ㄣ category=bopo.rhyme action=added target=uni3123 donor=uni3123 reason=-
+U+3124 char=ㄤ category=bopo.rhyme action=added target=uni3124 donor=uni3124 reason=-
+U+3125 char=ㄥ category=bopo.rhyme action=added target=uni3125 donor=uni3125 reason=-
+U+3126 char=ㄦ category=bopo.rhyme action=added target=uni3126 donor=uni3126 reason=-
+U+31A4 char=ㆤ category=bopo.rhyme action=added target=uni31A4 donor=uni31A4 reason=-
+U+31A5 char=ㆥ category=bopo.rhyme action=added target=uni31A5 donor=uni31A5 reason=-
+U+31A6 char=ㆦ category=bopo.rhyme action=added target=uni31A6 donor=uni31A6 reason=-
+U+31A7 char=ㆧ category=bopo.rhyme action=added target=uni31A7 donor=uni31A7 reason=-
+U+31A9 char=ㆩ category=bopo.rhyme action=added target=uni31A9 donor=uni31A9 reason=-
+U+31AA char=ㆪ category=bopo.rhyme action=added target=uni31AA donor=uni31AA reason=-
+U+31AB char=ㆫ category=bopo.rhyme action=added target=uni31AB donor=uni31AB reason=-
+U+31AC char=ㆬ category=bopo.rhyme action=added target=uni31AC donor=uni31AC reason=-
+U+31AD char=ㆭ category=bopo.rhyme action=added target=uni31AD donor=uni31AD reason=-
+U+31AE char=ㆮ category=bopo.rhyme action=added target=uni31AE donor=uni31AE reason=-
+U+31AF char=ㆯ category=bopo.rhyme action=added target=uni31AF donor=uni31AF reason=-
+U+31B0 char=ㆰ category=bopo.rhyme action=added target=uni31B0 donor=uni31B0 reason=-
+U+31B1 char=ㆱ category=bopo.rhyme action=added target=uni31B1 donor=uni31B1 reason=-
+U+31B2 char=ㆲ category=bopo.rhyme action=added target=uni31B2 donor=uni31B2 reason=-
+U+02D9 char=˙ category=bopo.tone_light action=replaced target=dotaccent donor=dotaccent reason=-
+U+02CA char=ˊ category=bopo.tone_mandarin action=added target=uni02CA donor=uni02CA reason=-
+U+02C7 char=ˇ category=bopo.tone_mandarin action=replaced target=caron donor=caron reason=-
+U+02CB char=ˋ category=bopo.tone_mandarin action=added target=uni02CB donor=uni02CB reason=-
+U+02EA char=˪ category=bopo.tone_dialect action=added target=uni02EA donor=uni02EA reason=-
+U+02EB char=˫ category=bopo.tone_dialect action=added target=uni02EB donor=uni02EB reason=-
+U+31B4 char=ㆴ category=bopo.entering_coda action=added target=uni31B4 donor=uni31B4 reason=-
+U+31B5 char=ㆵ category=bopo.entering_coda action=added target=uni31B5 donor=uni31B5 reason=-
+U+31B7 char=ㆷ category=bopo.entering_coda action=added target=uni31B7 donor=uni31B7 reason=-
+U+31BB char=ㆻ category=bopo.entering_coda action=added target=uni31BB donor=uni31BB reason=-
+U+0307 char=̇ category=bopo.yang_entering action=added target=uni0307 donor=uni0307 reason=-
+U+0358 char=͘ category=bopo.light_reading action=added target=uni0358 donor=uni0358 reason=-
+Verification
+U+3001 action=replaced category=punct.must original=uni3001 output=uni3001 donor=uni3001 width=1229->2048 changed=yes bounds=(727, 514, 1196.6315789473683, 1006)
+U+3002 action=replaced category=punct.must original=uni3002 output=uni3002 donor=uni3002 width=1229->2048 changed=yes bounds=(737.0, 489, 1313.0, 1065)
+U+3008 action=replaced category=punct.must original=uni3008 output=uni3008 donor=angleleft width=1024->2048 changed=yes bounds=(1090, -184, 1972, 1741)
+U+3009 action=replaced category=punct.must original=uni3009 output=uni3009 donor=angleright width=1024->2048 changed=yes bounds=(76, -184, 958, 1741)
+U+300A action=replaced category=punct.must original=uni300A output=uni300A donor=uni300A width=1024->2048 changed=yes bounds=(1071, -176, 1970, 1733)
+U+300B action=replaced category=punct.must original=uni300B output=uni300B donor=uni300B width=1024->2048 changed=yes bounds=(78, -176, 977, 1733)
+U+300C action=replaced category=punct.must original=uni300C output=uni300C donor=uni300C width=1024->2048 changed=yes bounds=(1346, 395, 1972, 1726)
+U+300D action=replaced category=punct.must original=uni300D output=uni300D donor=uni300D width=1024->2048 changed=yes bounds=(76, -170, 702, 1161)
+U+300E action=replaced category=punct.must original=uni300E output=uni300E donor=uni300E width=1024->2048 changed=yes bounds=(1239, 379, 1972, 1729)
+U+300F action=replaced category=punct.must original=uni300F output=uni300F donor=uni300F width=1024->2048 changed=yes bounds=(76, -170, 809, 1178)
+U+3010 action=replaced category=punct.must original=uni3010 output=uni3010 donor=uni3010 width=1024->2048 changed=yes bounds=(1270, -170, 1972, 1726)
+U+3011 action=replaced category=punct.must original=uni3011 output=uni3011 donor=uni3011 width=1024->2048 changed=yes bounds=(76, -170, 778, 1726)
+U+FF01 action=replaced category=punct.must original=uniFF01 output=uniFF01 donor=uniFF01 width=2048->2048 changed=yes bounds=(909, -25.0, 1133, 1567)
+U+FF08 action=replaced category=punct.must original=uniFF08 output=uniFF08 donor=uniFF08 width=1024->2048 changed=yes bounds=(1333.0, -180, 1919, 1737)
+U+FF09 action=replaced category=punct.must original=uniFF09 output=uniFF09 donor=uniFF09 width=1024->2048 changed=yes bounds=(129, -180, 715.0, 1737)
+U+FF0C action=replaced category=punct.must original=uniFF0C output=uniFF0C donor=uniFF0C width=1188->2048 changed=yes bounds=(821, 541, 1151, 1114)
+U+FF1A action=replaced category=punct.must original=uniFF1A output=uniFF1A donor=uniFF1A width=1024->2048 changed=yes bounds=(889.0, 72.0, 1159.0, 1341)
+U+FF1B action=replaced category=punct.must original=uniFF1B output=uniFF1B donor=uniFF1B width=1024->2048 changed=yes bounds=(856, -180, 1161, 1341)
+U+FF1F action=replaced category=punct.must original=uniFF1F output=uniFF1F donor=uniFF1F width=2048->2048 changed=yes bounds=(475, -25, 1468, 1567)
+U+2014 action=replaced category=punct.must original=emdash output=emdash donor=emdash width=2048->1823 changed=yes bounds=(88, 496, 1733, 600)
+U+2026 action=replaced category=punct.must original=ellipsis output=ellipsis donor=ellipsis width=2048->2048 changed=yes bounds=(227.0, 664, 1821.0, 893)
+U+00B7 action=replaced category=punct.must original=periodcentered output=periodcentered donor=periodcentered width=704->670 changed=yes bounds=(209.0, 614.0, 461.0, 866)
+U+3014 action=replaced category=punct.recommended original=uni3014 output=uni3014 donor=uni3014 width=1024->2048 changed=yes bounds=(1460, -180, 1970, 1737)
+U+3015 action=replaced category=punct.recommended original=uni3015 output=uni3015 donor=uni3015 width=1024->2048 changed=yes bounds=(78, -180, 588, 1737)
+U+3016 action=replaced category=punct.recommended original=uni3016 output=uni3016 donor=uni3016 width=2048->2048 changed=yes bounds=(1253, -170, 1972, 1726)
+U+3017 action=replaced category=punct.recommended original=uni3017 output=uni3017 donor=uni3017 width=2048->2048 changed=yes bounds=(76, -170, 795, 1726)
+U+FF0E action=replaced category=punct.recommended original=uniFF0E output=uniFF0E donor=uniFF0E width=1126->2048 changed=yes bounds=(909, 662.0, 1139, 895)
+U+FF3B action=replaced category=punct.recommended original=uniFF3B output=uniFF3B donor=uniFF3B width=1024->2048 changed=yes bounds=(1460, -170, 1972, 1726)
+U+FF3D action=replaced category=punct.recommended original=uniFF3D output=uniFF3D donor=uniFF3D width=1024->2048 changed=yes bounds=(76, -170, 588, 1726)
+U+FF5E action=replaced category=punct.recommended original=uniFF5E output=uniFF5E donor=uni301C width=2048->2048 changed=yes bounds=(102, 582, 1946, 979)
+U+2015 action=replaced category=punct.recommended original=uni2015 output=uni2015 donor=uni2015 width=2048->2048 changed=yes bounds=(145, 737, 1903, 819)
+U+2027 action=added category=punct.recommended original=- output=uni2027 donor=bullet width=-->2048 changed=yes bounds=(905.0, 659, 1143.0, 897.0)
+U+30FB action=replaced category=punct.recommended original=uni30FB output=uni30FB donor=uni30FB width=1024->2048 changed=yes bounds=(836.0, 590.0, 1212.0, 967)
+U+301D action=replaced category=punct.optional original=uni301D output=uni301D donor=uni301D width=2048->2048 changed=yes bounds=(1325.173184357542, 946, 1972, 1752.7232142857142)
+U+301E action=added category=punct.optional original=- output=uni301E donor=uni301E width=-->2048 changed=yes bounds=(76, 946, 722.8268156424581, 1752.7232142857142)
+U+FF5B action=replaced category=punct.optional original=uniFF5B output=uniFF5B donor=uniFF5B width=1024->2048 changed=yes bounds=(1192, -219, 1991, 1778)
+U+FF5D action=replaced category=punct.optional original=uniFF5D output=uniFF5D donor=uniFF5D width=1024->2048 changed=yes bounds=(57, -219, 856, 1778)
+U+2018 action=replaced category=punct.optional original=quoteleft output=quoteleft donor=uni02BB width=1024->475 changed=yes bounds=(102, 1104.0, 399, 1640)
+U+2019 action=replaced category=punct.optional original=quoteright output=quoteright donor=quoteright width=1024->475 changed=yes bounds=(88, 1079, 387, 1616)
+U+201C action=replaced category=punct.optional original=quotedblleft output=quotedblleft donor=quotedblleft width=1024->872 changed=yes bounds=(102, 1104.0, 797, 1640)
+U+201D action=replaced category=punct.optional original=quotedblright output=quotedblright donor=quotedblright width=1024->870 changed=yes bounds=(88, 1079, 780, 1616)
+U+FE30 action=added category=punct.vertical original=- output=uniFE30 donor=uniFE30 width=-->2048 changed=yes bounds=(909.0, 152, 1139.0, 1405.0)
+U+FE31 action=added category=punct.vertical original=- output=uniFE31 donor=uniFE31 width=-->2048 changed=yes bounds=(983, -100, 1065, 1657)
+U+FE32 action=added category=punct.vertical original=- output=uniFE32 donor=uniFE32 width=-->2048 changed=yes bounds=(983, 522, 1065, 1034)
+U+FE33 action=added category=punct.vertical original=- output=uniFE33 donor=uniFE33 width=-->2048 changed=yes bounds=(0, -246, 82, 1802)
+U+FE35 action=added category=punct.vertical original=- output=uniFE35 donor=uniFE35 width=-->2048 changed=yes bounds=(66, -115, 1982, 471)
+U+FE36 action=added category=punct.vertical original=- output=uniFE36 donor=uniFE36 width=-->2048 changed=yes bounds=(66, 1085, 1982, 1673)
+U+FE37 action=added category=punct.vertical original=- output=uniFE37 donor=uniFE37 width=-->2048 changed=yes bounds=(25, -244, 2023, 451)
+U+FE38 action=added category=punct.vertical original=- output=uniFE38 donor=uniFE38 width=-->2048 changed=yes bounds=(25, 1100, 2023, 1796)
+U+FE39 action=added category=punct.vertical original=- output=uniFE39 donor=uniFE39 width=-->2048 changed=yes bounds=(66, -170, 1982, 342)
+U+FE3A action=added category=punct.vertical original=- output=uniFE3A donor=uniFE3A width=-->2048 changed=yes bounds=(66, 1214, 1982, 1726)
+U+FE3B action=added category=punct.vertical original=- output=uniFE3B donor=uniFE3B width=-->2048 changed=yes bounds=(76, -170, 1972, 532)
+U+FE3C action=added category=punct.vertical original=- output=uniFE3C donor=uniFE3C width=-->2048 changed=yes bounds=(76, 1024, 1972, 1726)
+U+FE3D action=added category=punct.vertical original=- output=uniFE3D donor=uniFE3D width=-->2048 changed=yes bounds=(70, -168, 1978, 731)
+U+FE3E action=added category=punct.vertical original=- output=uniFE3E donor=uniFE3E width=-->2048 changed=yes bounds=(70, 825, 1978, 1724)
+U+FE3F action=added category=punct.vertical original=- output=uniFE3F donor=uniFE3F width=-->2048 changed=yes bounds=(61, -170, 1987, 713)
+U+FE40 action=added category=punct.vertical original=- output=uniFE40 donor=uniFE40 width=-->2048 changed=yes bounds=(61, 844, 1987, 1726)
+U+FE41 action=added category=punct.vertical original=- output=uniFE41 donor=uniFE41 width=-->2048 changed=yes bounds=(537, -170, 1997, 457)
+U+FE42 action=added category=punct.vertical original=- output=uniFE42 donor=uniFE42 width=-->2048 changed=yes bounds=(51, 1092, 1511, 1718)
+U+FE43 action=added category=punct.vertical original=- output=uniFE43 donor=uniFE43 width=-->2048 changed=yes bounds=(625, -170, 1972, 543)
+U+FE44 action=added category=punct.vertical original=- output=uniFE44 donor=uniFE44 width=-->2048 changed=yes bounds=(76, 1014, 1423, 1726)
+U+FE4F action=added category=punct.vertical original=- output=uniFE4F donor=uniFE4F width=-->2048 changed=yes bounds=(0, -164, 2048, 35)
+U+3105 action=added category=bopo.onset original=- output=uni3105 donor=uni3105 width=-->2048 changed=yes bounds=(291.9846153846154, -86.12903225806451, 1765, 1633.152380952381)
+U+3106 action=added category=bopo.onset original=- output=uni3106 donor=uni3106 width=-->2048 changed=yes bounds=(332, -80, 1765, 1622.235294117647)
+U+3107 action=added category=bopo.onset original=- output=uni3107 donor=uni3107 width=-->2048 changed=yes bounds=(310.77142857142854, 99.62790697674419, 1792.6666666666667, 1443.0)
+U+3108 action=added category=bopo.onset original=- output=uni3108 donor=uni3108 width=-->2048 changed=yes bounds=(267.8181818181818, 81.66666666666667, 1795.8867924528302, 1452.9253731343283)
+U+3109 action=added category=bopo.onset original=- output=uni3109 donor=uni3109 width=-->2048 changed=yes bounds=(238, -141, 1827, 1667)
+U+310A action=added category=bopo.onset original=- output=uni310A donor=uni310A width=-->2048 changed=yes bounds=(141.75862068965517, 59, 1855.45, 1628.5217391304348)
+U+310B action=added category=bopo.onset original=- output=uni310B donor=uni310B width=-->2048 changed=yes bounds=(374.6756756756757, -82, 1737.84, 1629.3333333333333)
+U+310C action=added category=bopo.onset original=- output=uni310C donor=uni310C width=-->2048 changed=yes bounds=(281, -92.16666666666667, 1769.2790697674418, 1669.3555555555556)
+U+310D action=added category=bopo.onset original=- output=uni310D donor=uni310D width=-->2048 changed=yes bounds=(303, -74, 1642.1267605633802, 1581.5)
+U+310E action=added category=bopo.onset original=- output=uni310E donor=uni310E width=-->2048 changed=yes bounds=(140.93548387096774, -117.05128205128204, 1868.4141414141413, 1581.0)
+U+310F action=added category=bopo.onset original=- output=uni310F donor=uni310F width=-->2048 changed=yes bounds=(110.875, -40.55555555555556, 1888.7205882352941, 1516.1904761904761)
+U+3110 action=added category=bopo.onset original=- output=uni3110 donor=uni3110 width=-->2048 changed=yes bounds=(476.8730158730159, -109, 1562.6176470588234, 1652.6666666666667)
+U+3111 action=added category=bopo.onset original=- output=uni3111 donor=uni3111 width=-->2048 changed=yes bounds=(461, -84, 1485, 1636)
+U+3112 action=added category=bopo.onset original=- output=uni3112 donor=uni3112 width=-->2048 changed=yes bounds=(183.77777777777777, -29, 1800.6101694915255, 1488.6404494382023)
+U+312B action=added category=bopo.onset original=- output=uni312B donor=uni312B width=-->2048 changed=yes bounds=(176.8395061728395, 33, 1807.2064516129033, 1489.734693877551)
+U+31A0 action=added category=bopo.onset original=- output=uni31A0 donor=uni31A0 width=-->2048 changed=yes bounds=(288.85057471264366, -84, 1774, 1639.2190476190476)
+U+31A1 action=added category=bopo.onset original=- output=uni31A1 donor=uni31A1 width=-->2048 changed=yes bounds=(203, -68, 1720.5714285714287, 1524.3333333333333)
+U+31A2 action=added category=bopo.onset original=- output=uni31A2 donor=uni31A2 width=-->2048 changed=yes bounds=(457, -172, 1574.4468085106382, 1635.934065934066)
+U+31A3 action=added category=bopo.onset original=- output=uni31A3 donor=uni31A3 width=-->2048 changed=yes bounds=(303, -74, 1851, 1581.5)
+U+3113 action=added category=bopo.empty_rhyme_onset original=- output=uni3113 donor=uni3113 width=-->2048 changed=yes bounds=(176.27941176470588, -109, 1845.0677966101696, 1532.8823529411766)
+U+3114 action=added category=bopo.empty_rhyme_onset original=- output=uni3114 donor=uni3114 width=-->2048 changed=yes bounds=(292.42857142857144, -168, 1456.235294117647, 1694.3902439024391)
+U+3115 action=added category=bopo.empty_rhyme_onset original=- output=uni3115 donor=uni3115 width=-->2048 changed=yes bounds=(178.16037735849056, -133.0888888888889, 1771.49, 1632)
+U+3116 action=added category=bopo.empty_rhyme_onset original=- output=uni3116 donor=uni3116 width=-->2048 changed=yes bounds=(376.07462686567163, -11.142857142857142, 1675.5862068965516, 1548.5714285714287)
+U+3117 action=added category=bopo.empty_rhyme_onset original=- output=uni3117 donor=uni3117 width=-->2048 changed=yes bounds=(275.775, -47, 1730.0285714285715, 1519.0666666666666)
+U+3118 action=added category=bopo.empty_rhyme_onset original=- output=uni3118 donor=uni3118 width=-->2048 changed=yes bounds=(143, -147.03571428571428, 1826.0137931034483, 1677.7654320987654)
+U+3119 action=added category=bopo.empty_rhyme_onset original=- output=uni3119 donor=uni3119 width=-->2048 changed=yes bounds=(315, 47, 1782.3333333333333, 1530.8)
+U+3127 action=added category=bopo.medial original=- output=uni3127 donor=uni3127 width=-->2048 changed=yes bounds=(197.48019801980197, 651, 1830.892857142857, 933.3846153846154)
+U+3128 action=added category=bopo.medial original=- output=uni3128 donor=uni3128 width=-->2048 changed=yes bounds=(240, 45, 1722, 1474.2857142857142)
+U+3129 action=added category=bopo.medial original=- output=uni3129 donor=uni3129 width=-->2048 changed=yes bounds=(366.5625, 231, 1671.3333333333333, 1451.3730569948186)
+U+311A action=added category=bopo.rhyme original=- output=uni311A donor=uni311A width=-->2048 changed=yes bounds=(356.2241379310345, -121, 1690, 1514.5298013245033)
+U+311B action=added category=bopo.rhyme original=- output=uni311B donor=uni311B width=-->2048 changed=yes bounds=(255.11436170212767, -61, 1804.396551724138, 1421.0)
+U+311C action=added category=bopo.rhyme original=- output=uni311C donor=uni311C width=-->2048 changed=yes bounds=(214.94736842105263, -111, 1856.4235294117648, 1619.084745762712)
+U+311D action=added category=bopo.rhyme original=- output=uni311D donor=uni311D width=-->2048 changed=yes bounds=(179.01538461538462, -90, 1919.396551724138, 1531.78125)
+U+311E action=added category=bopo.rhyme original=- output=uni311E donor=uni311E width=-->2048 changed=yes bounds=(283.0, -55.53333333333333, 1788.955223880597, 1518.9411764705883)
+U+311F action=added category=bopo.rhyme original=- output=uni311F donor=uni311F width=-->2048 changed=yes bounds=(220.72727272727275, -20.083333333333332, 1821, 1541.7777777777778)
+U+3120 action=added category=bopo.rhyme original=- output=uni3120 donor=uni3120 width=-->2048 changed=yes bounds=(330.64179104477614, -6, 1690, 1636.125)
+U+3121 action=added category=bopo.rhyme original=- output=uni3121 donor=uni3121 width=-->2048 changed=yes bounds=(218.90697674418604, 41.177215189873415, 1763.0277777777778, 1513.45)
+U+3122 action=added category=bopo.rhyme original=- output=uni3122 donor=uni3122 width=-->2048 changed=yes bounds=(283.09322033898303, -160.29787234042553, 1752.2, 1581.4)
+U+3123 action=added category=bopo.rhyme original=- output=uni3123 donor=uni3123 width=-->2048 changed=yes bounds=(254.95081967213116, -98.33333333333333, 1783.625, 1549.6097560975609)
+U+3124 action=added category=bopo.rhyme original=- output=uni3124 donor=uni3124 width=-->2048 changed=yes bounds=(154, -109, 1765, 1589.8461538461538)
+U+3125 action=added category=bopo.rhyme original=- output=uni3125 donor=uni3125 width=-->2048 changed=yes bounds=(199, -4, 1823.0602409638554, 1481)
+U+3126 action=added category=bopo.rhyme original=- output=uni3126 donor=uni3126 width=-->2048 changed=yes bounds=(221, 23, 1788, 1570.9014084507041)
+U+31A4 action=added category=bopo.rhyme original=- output=uni31A4 donor=uni31A4 width=-->2048 changed=yes bounds=(96.35820895522389, -76, 1851.75, 1452.820512820513)
+U+31A5 action=added category=bopo.rhyme original=- output=uni31A5 donor=uni31A5 width=-->2048 changed=yes bounds=(93.6231884057971, -181.10294117647058, 1854.225, 1457.8823529411766)
+U+31A6 action=added category=bopo.rhyme original=- output=uni31A6 donor=uni31A6 width=-->2048 changed=yes bounds=(249.64705882352942, -143, 1825.6133333333332, 1438.909090909091)
+U+31A7 action=added category=bopo.rhyme original=- output=uni31A7 donor=uni31A7 width=-->2048 changed=yes bounds=(245.46733668341707, -143, 1800, 1427.28125)
+U+31A9 action=added category=bopo.rhyme original=- output=uni31A9 donor=uni31A9 width=-->2048 changed=yes bounds=(372.9166666666667, -143, 1670.2549019607843, 1511.5)
+U+31AA action=added category=bopo.rhyme original=- output=uni31AA donor=uni31AA width=-->2048 changed=yes bounds=(184.52054794520546, 270, 1910.0833333333333, 1270.0444444444445)
+U+31AB action=added category=bopo.rhyme original=- output=uni31AB donor=uni31AB width=-->2048 changed=yes bounds=(252, 48.0, 1937, 1474.7202797202797)
+U+31AC action=added category=bopo.rhyme original=- output=uni31AC donor=uni31AC width=-->2048 changed=yes bounds=(319, 116.95121951219512, 1782.25, 1420.8823529411766)
+U+31AD action=added category=bopo.rhyme original=- output=uni31AD donor=uni31AD width=-->2048 changed=yes bounds=(131, 31, 1837, 1497.5714285714287)
+U+31AE action=added category=bopo.rhyme original=- output=uni31AE donor=uni31AE width=-->2048 changed=yes bounds=(121, -61.471698113207545, 1778.4012738853503, 1514.2857142857142)
+U+31AF action=added category=bopo.rhyme original=- output=uni31AF donor=uni31AF width=-->2048 changed=yes bounds=(345.44303797468353, -90.30188679245283, 1837.034188034188, 1628.3265306122448)
+U+31B0 action=added category=bopo.rhyme original=- output=uni31B0 donor=uni31B0 width=-->2048 changed=yes bounds=(299, -63, 1800.0, 1626.763440860215)
+U+31B1 action=added category=bopo.rhyme original=- output=uni31B1 donor=uni31B1 width=-->2048 changed=yes bounds=(210.1219512195122, -37.390243902439025, 1816.8947368421052, 1542)
+U+31B2 action=added category=bopo.rhyme original=- output=uni31B2 donor=uni31B2 width=-->2048 changed=yes bounds=(236.97727272727272, 66.31818181818181, 1810.8481012658228, 1436.1492537313434)
+U+02D9 action=replaced category=bopo.tone_light original=dotaccent output=dotaccent donor=dotaccent width=1024->819 changed=yes bounds=(228.92156862745097, 604, 590.0784313725491, 971)
+U+02CA action=added category=bopo.tone_mandarin original=- output=uni02CA donor=uni02CA width=-->1229 changed=yes bounds=(156.83098591549296, 916.1219512195122, 1090, 1692)
+U+02C7 action=replaced category=bopo.tone_mandarin original=caron output=caron donor=caron width=1024->1229 changed=yes bounds=(119, 948, 1110, 1673)
+U+02CB action=added category=bopo.tone_mandarin original=- output=uni02CB donor=uni02CB width=-->1229 changed=yes bounds=(170.57714285714286, 883, 1083, 1680.0227272727273)
+U+02EA action=added category=bopo.tone_dialect original=- output=uni02EA donor=uni02EA width=-->1229 changed=yes bounds=(190, 897, 1049, 1700)
+U+02EB action=added category=bopo.tone_dialect original=- output=uni02EB donor=uni02EB width=-->1229 changed=yes bounds=(190, 815, 1049, 1700)
+U+31B4 action=added category=bopo.entering_coda original=- output=uni31B4 donor=uni31B4 width=-->1229 changed=yes bounds=(150.95238095238096, -135, 1101.5384615384614, 977.4615384615385)
+U+31B5 action=added category=bopo.entering_coda original=- output=uni31B5 donor=uni31B5 width=-->1229 changed=yes bounds=(113, -162, 1139.6538461538462, 988.5555555555555)
+U+31B7 action=added category=bopo.entering_coda original=- output=uni31B7 donor=uni31B7 width=-->1229 changed=yes bounds=(57, -106, 1137.3333333333333, 894.015873015873)
+U+31BB action=added category=bopo.entering_coda original=- output=uni31BB donor=uni31BB width=-->1229 changed=yes bounds=(158, -127, 1026, 930.390243902439)
+U+0307 action=added category=bopo.yang_entering original=- output=uni0307 donor=uni0307 width=-->0 changed=yes bounds=(326, 1358, 690, 1726)
+U+0358 action=added category=bopo.light_reading original=- output=uni0358 donor=uni0358 width=-->0 changed=yes bounds=(-281.0, 915, -47.0, 1141.0)

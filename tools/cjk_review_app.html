@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>CJK 合流審閱台</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --paper: #f4ead7;
+      --paper-strong: #efe2c8;
+      --card: rgba(255, 251, 243, 0.92);
+      --ink: #2b2119;
+      --muted: #6e6257;
+      --line: #d2c3af;
+      --accent: #145c4a;
+      --accent-soft: #dcece7;
+      --copy: #18794e;
+      --edit: #c17a23;
+      --reject: #9a3b2c;
+      --shadow: 0 18px 50px rgba(70, 46, 23, 0.14);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'BIZReview';
+      src: url('../BIZUDPMincho-SourceSerifMix-Regular.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: 'KlarReview';
+      src: url('../KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: 'GenYoReview';
+      src: url('../referenceFont/GenYoMin2TW-R.ttf') format('truetype');
+      font-weight: 400;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.55), transparent 32%),
+        linear-gradient(180deg, #fbf4e6 0%, var(--paper) 48%, var(--paper-strong) 100%);
+      font-family: "Aptos", "Microsoft JhengHei", "PingFang TC", sans-serif;
+    }
+
+    .page {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 28px 22px 40px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 24px 28px;
+      border: 1px solid rgba(154, 118, 78, 0.18);
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.86), rgba(251, 243, 226, 0.88)),
+        repeating-linear-gradient(90deg, rgba(116, 90, 60, 0.03) 0, rgba(116, 90, 60, 0.03) 1px, transparent 1px, transparent 18px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Constantia", "BIZReview", serif;
+      font-size: clamp(2rem, 3.6vw, 3.4rem);
+      letter-spacing: 0.02em;
+      color: #19362f;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .button {
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 18px;
+      cursor: pointer;
+      font-size: 0.98rem;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      box-shadow: 0 10px 20px rgba(61, 43, 27, 0.08);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button:active { transform: translateY(1px); }
+    .button-primary { background: var(--accent); color: #fff; }
+    .button-secondary { background: #fff9f1; color: var(--ink); border-color: rgba(43, 33, 25, 0.12); }
+    .button-danger { background: #fff1ef; color: var(--reject); border-color: rgba(154, 59, 44, 0.18); }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(120, 90, 60, 0.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7d5d3d;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat {
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(120, 90, 60, 0.12);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.7rem;
+      font-family: "Constantia", serif;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .filter-row,
+    .field-stack,
+    .nav-row {
+      display: grid;
+      gap: 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid rgba(120, 90, 60, 0.16);
+      background: #fffdf8;
+      color: var(--ink);
+      padding: 8px 12px;
+      font-size: 0.92rem;
+      cursor: pointer;
+    }
+
+    .chip.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(20, 92, 74, 0.2);
+      font-weight: 700;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(120, 90, 60, 0.18);
+      background: #fffdf9;
+      padding: 12px 14px;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 190px;
+      resize: vertical;
+      line-height: 1.65;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .stage {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(120, 90, 60, 0.14);
+      font-size: 0.94rem;
+    }
+
+    .meta-badge strong {
+      font-family: "Consolas", monospace;
+      font-size: 1rem;
+    }
+
+    .meta-badge.genyo-yes {
+      background: rgba(20, 92, 74, 0.08);
+      color: var(--accent);
+    }
+
+    .meta-badge.genyo-no {
+      background: rgba(154, 59, 44, 0.08);
+      color: var(--reject);
+    }
+
+    .review-hero {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(120, 90, 60, 0.14);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249, 242, 229, 0.96)),
+        repeating-linear-gradient(0deg, rgba(116, 90, 60, 0.04) 0, rgba(116, 90, 60, 0.04) 1px, transparent 1px, transparent 42px);
+    }
+
+    .hybrid-preview {
+      display: grid;
+      gap: 14px;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .hybrid-title {
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7d5d3d;
+    }
+
+    .hybrid-line {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.18em;
+      font-size: clamp(3.4rem, 8vw, 7.8rem);
+      line-height: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .font-biz { font-family: "BIZReview", serif; }
+    .font-klar { font-family: "KlarReview", serif; }
+    .font-genyo { font-family: "GenYoReview", serif; }
+
+    .focus-char {
+      color: var(--accent);
+      border-bottom: 5px solid rgba(20, 92, 74, 0.18);
+      padding: 0 0.04em 0.05em;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .preview-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(120, 90, 60, 0.12);
+    }
+
+    .preview-card h3 {
+      margin: 0 0 12px;
+      font-size: 0.92rem;
+      color: #7d5d3d;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .glyph-solo {
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .preview-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .decision {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-align: left;
+      background: #fffdf8;
+      box-shadow: 0 12px 28px rgba(61, 43, 27, 0.08);
+    }
+
+    .decision strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+    }
+
+    .decision span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .decision-copy { border-color: rgba(24, 121, 78, 0.18); }
+    .decision-edit { border-color: rgba(193, 122, 35, 0.18); }
+    .decision-reject { border-color: rgba(154, 59, 44, 0.18); }
+    .decision-clear { border-color: rgba(43, 33, 25, 0.12); }
+
+    .decision-copy:hover { background: rgba(24, 121, 78, 0.07); }
+    .decision-edit:hover { background: rgba(193, 122, 35, 0.08); }
+    .decision-reject:hover { background: rgba(154, 59, 44, 0.08); }
+    .decision-clear:hover { background: rgba(43, 33, 25, 0.06); }
+
+    .hotkeys {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      align-items: center;
+    }
+
+    .hotkeys kbd {
+      display: inline-block;
+      min-width: 2em;
+      text-align: center;
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(120, 90, 60, 0.18);
+      background: #fffdf9;
+      font-family: "Consolas", monospace;
+      color: var(--ink);
+    }
+
+    .specimen {
+      margin-top: 18px;
+      padding: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .specimen-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .specimen-head h2 {
+      margin: 0;
+      font-family: "Constantia", "BIZReview", serif;
+      font-size: 1.7rem;
+    }
+
+    .specimen-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .specimen-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .range-group {
+      min-width: 180px;
+    }
+
+    .range-group output {
+      display: inline-block;
+      min-width: 56px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .specimen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .specimen-card {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(120, 90, 60, 0.12);
+      min-height: 320px;
+    }
+
+    .specimen-card header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .specimen-card h3 {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .specimen-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .specimen-copy {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(250, 244, 232, 0.72);
+      border: 1px dashed rgba(120, 90, 60, 0.16);
+      font-size: var(--specimen-size, 24px);
+      line-height: var(--specimen-line-height, 1.9);
+    }
+
+    .empty-state {
+      padding: 40px 22px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed rgba(120, 90, 60, 0.18);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.55);
+    }
+
+    @media (max-width: 1100px) {
+      .workspace,
+      .preview-grid,
+      .decision-grid,
+      .specimen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page { padding: 18px 14px 28px; }
+      .hero { padding: 20px; }
+      .stage, .sidebar, .specimen { padding: 18px; }
+      .hybrid-line { font-size: clamp(2.8rem, 14vw, 4.8rem); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <h1>CJK 合流審閱台</h1>
+        <p>上半部維持逐字審閱與匯出決策；下半部固定展示 BIZ UDPMincho 與 GenYoMin R 的中文內文排版，讓你同頁檢字與檢文。缺字清單仍來自 KlarMin 差集，但頁面會額外標出該字是否也存在於 GenYoMin。</p>
+      </div>
+      <div class="hero-actions">
+        <button class="button button-secondary" type="button" onclick="jumpToUndecided()">跳到未決</button>
+        <button class="button button-primary" type="button" onclick="exportData()">匯出 review_decisions.json</button>
+        <button class="button button-danger" type="button" onclick="resetProgress()">清除本機暫存</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar card">
+        <section>
+          <h2 class="section-title">進度總覽</h2>
+          <div class="stats-grid">
+            <div class="stat"><strong id="statTotal">0</strong><span>總字數</span></div>
+            <div class="stat"><strong id="statUndecided">0</strong><span>未決</span></div>
+            <div class="stat"><strong id="statCopy">0</strong><span>直接合併</span></div>
+            <div class="stat"><strong id="statEdit">0</strong><span>需修改</span></div>
+            <div class="stat"><strong id="statReject">0</strong><span>捨棄</span></div>
+            <div class="stat"><strong id="statFiltered">0</strong><span>目前篩選</span></div>
+          </div>
+        </section>
+
+        <section class="filter-row">
+          <h2 class="section-title">篩選模式</h2>
+          <div class="chip-row">
+            <button class="chip active" type="button" data-filter="all">全部</button>
+            <button class="chip" type="button" data-filter="undecided">未決</button>
+            <button class="chip" type="button" data-filter="copy">直接合併</button>
+            <button class="chip" type="button" data-filter="edit">需修改</button>
+            <button class="chip" type="button" data-filter="reject">捨棄</button>
+          </div>
+        </section>
+
+        <section class="field-stack">
+          <h2 class="section-title">上下文</h2>
+          <label>左側框字
+            <input id="leftContext" type="text" value="語" maxlength="4">
+          </label>
+          <label>右側框字
+            <input id="rightContext" type="text" value="說" maxlength="4">
+          </label>
+        </section>
+
+        <section class="nav-row">
+          <h2 class="section-title">定位</h2>
+          <label>跳到第幾筆
+            <input id="jumpIndex" type="number" min="1" step="1" placeholder="例如 120">
+          </label>
+          <button class="button button-secondary" type="button" onclick="jumpToIndex()">前往這一筆</button>
+        </section>
+
+        <section class="hint">
+          <h2 class="section-title">操作提示</h2>
+          這個工具會把決策存在瀏覽器 LocalStorage。你可以中途關掉視窗，下次打開同一個 HTML 檔會接回上次進度。匯出的 JSON 維持原本 <code>hex -> decision</code> 結構，可直接餵給 <code>tools/merge_approved_cjk.py</code>。
+        </section>
+      </aside>
+
+      <section class="stage card">
+        <div class="meta-strip">
+          <div class="meta-badge"><strong id="badgeHex">U+0000</strong><span id="badgeIndex">0 / 0</span></div>
+          <div class="meta-badge"><span id="badgeBlock">CJK Unified Ideographs</span></div>
+          <div class="meta-badge"><span id="badgePlane">BMP</span></div>
+          <div id="badgeDecision" class="meta-badge"><span>尚未決策</span></div>
+          <div id="badgeGenYo" class="meta-badge genyo-no"><span>GenYoMin 未收錄</span></div>
+        </div>
+
+        <div class="review-hero">
+          <div class="hybrid-preview">
+            <div class="hybrid-title">BIZ 框感 + KlarMin 候選字</div>
+            <div class="hybrid-line">
+              <span class="font-biz" id="contextLeftPreview">語</span>
+              <span class="font-klar focus-char" id="focusPreview">？</span>
+              <span class="font-biz" id="contextRightPreview">說</span>
+            </div>
+          </div>
+
+          <div class="preview-grid">
+            <article class="preview-card">
+              <h3>KlarMin 借字來源</h3>
+              <div class="glyph-solo font-klar" id="klarSolo">？</div>
+              <p id="klarInfo">glyph name</p>
+            </article>
+            <article class="preview-card">
+              <h3>GenYoMin 參考</h3>
+              <div class="glyph-solo font-genyo" id="genyoSolo">？</div>
+              <p id="genyoInfo">若此字在 GenYoMin 存在，會在這裡標示 glyph name。</p>
+            </article>
+            <article class="preview-card">
+              <h3>Unicode 資訊</h3>
+              <div class="glyph-solo" id="unicodeSolo">？</div>
+              <p id="unicodeInfo">block / plane</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="decision-grid">
+          <button class="decision decision-reject" type="button" onclick="makeDecision('reject')">
+            <strong>❌ 捨棄</strong>
+            <span>不進合流，保留缺字狀態。</span>
+          </button>
+          <button class="decision decision-edit" type="button" onclick="makeDecision('edit')">
+            <strong>🛠️ 需修改</strong>
+            <span>骨架可借，但還要進 FontForge 修筆形。</span>
+          </button>
+          <button class="decision decision-copy" type="button" onclick="makeDecision('copy')">
+            <strong>✅ 直接合併</strong>
+            <span>高度、粗細、調性都可直接打包。</span>
+          </button>
+          <button class="decision decision-clear" type="button" onclick="clearDecision()">
+            <strong>↺ 清除此筆</strong>
+            <span>把目前這個字退回未決狀態。</span>
+          </button>
+        </div>
+
+        <div class="hotkeys">
+          <span><kbd>1</kbd> 捨棄</span>
+          <span><kbd>2</kbd> 需修改</span>
+          <span><kbd>3</kbd> 直接合併</span>
+          <span><kbd>0</kbd> 清除此筆</span>
+          <span><kbd>←</kbd> / <kbd>→</kbd> 前後移動</span>
+          <span><kbd>U</kbd> 跳到未決</span>
+          <span><kbd>E</kbd> 匯出 JSON</span>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>目前這個篩選條件下沒有資料。</div>
+      </section>
+    </main>
+
+    <section class="specimen card">
+      <div class="specimen-head">
+        <div>
+          <h2>對照字體內文排版</h2>
+          <p>這裡預載你指定的中文 sample text，左右同步顯示 BIZ UDPMincho 與 GenYoMin R。你可以直接改文字，設定會記在本機，下次打開還在。</p>
+        </div>
+        <div class="specimen-controls">
+          <label class="range-group">字級
+            <input id="specimenSize" type="range" min="18" max="46" value="24">
+            <output id="specimenSizeOut">24px</output>
+          </label>
+          <label class="range-group">行高
+            <input id="specimenLineHeight" type="range" min="1.2" max="2.6" step="0.05" value="1.9">
+            <output id="specimenLineHeightOut">1.90</output>
+          </label>
+          <button class="button button-secondary" type="button" onclick="resetSpecimenText()">恢復預設內文</button>
+        </div>
+      </div>
+
+      <label>可編輯內文
+        <textarea id="specimenInput"></textarea>
+      </label>
+
+      <div class="specimen-grid">
+        <article class="specimen-card">
+          <header>
+            <h3>BIZ UDPMincho</h3>
+            <span>目前工作字型</span>
+          </header>
+          <pre class="specimen-copy font-biz" id="bizSpecimen"></pre>
+        </article>
+
+        <article class="specimen-card">
+          <header>
+            <h3>GenYoMin2 TW R</h3>
+            <span>參考字體</span>
+          </header>
+          <pre class="specimen-copy font-genyo" id="genyoSpecimen"></pre>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script src="../reports/missing_chars_data.js"></script>
+  <script>
+    const DEFAULT_SPECIMEN = `南去經三國，東來過五湖
+永東國酬愛鬱靈鷹袋
+
+BIZ UDPMincho 漢字合流工作流 (Walkthrough)
+我已經按照計畫為您建立了全套的處理環境，讓您可以開始最省力的「逐字審閱與精確合流」任務。這份指南將協助您啟動流程。
+
+已經為您準備好的資源
+reports/missing_chars.json
+tools/cjk_review_app.html
+合併縮放腳本 (tools/merge_approved_cjk.py)
+
+步驟 1：開啟工具台
+請直接雙擊 HTML，用 Chrome、Edge 或 Safari 開啟。
+
+步驟 2：進行決策
+[1] 捨棄
+[2] 需修改
+[3] 直接合併`;
+
+    const STORAGE = {
+      decisions: 'cjkReview.decisions.v2',
+      filter: 'cjkReview.filter.v2',
+      index: 'cjkReview.index.v2',
+      leftContext: 'cjkReview.leftContext.v2',
+      rightContext: 'cjkReview.rightContext.v2',
+      specimen: 'cjkReview.specimen.v2',
+      specimenSize: 'cjkReview.specimenSize.v2',
+      specimenLineHeight: 'cjkReview.specimenLineHeight.v2'
+    };
+
+    const chars = Array.isArray(window.MISSING_CHARS) ? window.MISSING_CHARS : [];
+    let decisions = JSON.parse(localStorage.getItem(STORAGE.decisions) || '{}');
+    let filterMode = localStorage.getItem(STORAGE.filter) || 'all';
+    let currentIndex = Number(localStorage.getItem(STORAGE.index) || 0);
+
+    const leftContextInput = document.getElementById('leftContext');
+    const rightContextInput = document.getElementById('rightContext');
+    const specimenInput = document.getElementById('specimenInput');
+    const specimenSizeInput = document.getElementById('specimenSize');
+    const specimenLineHeightInput = document.getElementById('specimenLineHeight');
+
+    leftContextInput.value = localStorage.getItem(STORAGE.leftContext) || '語';
+    rightContextInput.value = localStorage.getItem(STORAGE.rightContext) || '說';
+    specimenInput.value = localStorage.getItem(STORAGE.specimen) || DEFAULT_SPECIMEN;
+    specimenSizeInput.value = localStorage.getItem(STORAGE.specimenSize) || 24;
+    specimenLineHeightInput.value = localStorage.getItem(STORAGE.specimenLineHeight) || 1.9;
+
+    function countByDecision(type) {
+      return Object.values(decisions).filter((value) => value === type).length;
+    }
+
+    function getFilteredChars() {
+      if (filterMode === 'all') return chars;
+      if (filterMode === 'undecided') return chars.filter((item) => !decisions[item.hex]);
+      return chars.filter((item) => decisions[item.hex] === filterMode);
+    }
+
+    function clampIndex() {
+      const filtered = getFilteredChars();
+      if (!filtered.length) {
+        currentIndex = 0;
+        return;
+      }
+      if (currentIndex < 0) currentIndex = 0;
+      if (currentIndex >= filtered.length) currentIndex = filtered.length - 1;
+      localStorage.setItem(STORAGE.index, String(currentIndex));
+    }
+
+    function getCurrentChar() {
+      const filtered = getFilteredChars();
+      return filtered[currentIndex] || null;
+    }
+
+    function persistDecisionState() {
+      localStorage.setItem(STORAGE.decisions, JSON.stringify(decisions));
+    }
+
+    function setDecisionBadge(decision) {
+      const badge = document.getElementById('badgeDecision');
+      const label = badge.querySelector('span');
+      badge.className = 'meta-badge';
+      if (decision === 'copy') {
+        badge.style.background = 'rgba(24, 121, 78, 0.08)';
+        badge.style.color = 'var(--copy)';
+        label.textContent = '已標為直接合併';
+      } else if (decision === 'edit') {
+        badge.style.background = 'rgba(193, 122, 35, 0.08)';
+        badge.style.color = 'var(--edit)';
+        label.textContent = '已標為需修改';
+      } else if (decision === 'reject') {
+        badge.style.background = 'rgba(154, 59, 44, 0.08)';
+        badge.style.color = 'var(--reject)';
+        label.textContent = '已標為捨棄';
+      } else {
+        badge.style.background = 'rgba(255,255,255,0.75)';
+        badge.style.color = 'var(--ink)';
+        label.textContent = '尚未決策';
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('statTotal').textContent = chars.length;
+      document.getElementById('statCopy').textContent = countByDecision('copy');
+      document.getElementById('statEdit').textContent = countByDecision('edit');
+      document.getElementById('statReject').textContent = countByDecision('reject');
+      document.getElementById('statUndecided').textContent = chars.length - Object.keys(decisions).length;
+      document.getElementById('statFiltered').textContent = getFilteredChars().length;
+    }
+
+    function updateFilterChips() {
+      document.querySelectorAll('.chip').forEach((chip) => {
+        chip.classList.toggle('active', chip.dataset.filter === filterMode);
+      });
+    }
+
+    function updateSpecimen() {
+      const specimen = specimenInput.value;
+      document.documentElement.style.setProperty('--specimen-size', `${specimenSizeInput.value}px`);
+      document.documentElement.style.setProperty('--specimen-line-height', specimenLineHeightInput.value);
+      document.getElementById('specimenSizeOut').textContent = `${specimenSizeInput.value}px`;
+      document.getElementById('specimenLineHeightOut').textContent = Number(specimenLineHeightInput.value).toFixed(2);
+      document.getElementById('bizSpecimen').textContent = specimen;
+      document.getElementById('genyoSpecimen').textContent = specimen;
+      localStorage.setItem(STORAGE.specimen, specimen);
+      localStorage.setItem(STORAGE.specimenSize, specimenSizeInput.value);
+      localStorage.setItem(STORAGE.specimenLineHeight, specimenLineHeightInput.value);
+    }
+
+    function render() {
+      updateStats();
+      updateFilterChips();
+      clampIndex();
+      const filtered = getFilteredChars();
+      const current = getCurrentChar();
+      document.getElementById('emptyState').hidden = !!current;
+      if (!current) {
+        document.getElementById('badgeHex').textContent = '無資料';
+        document.getElementById('badgeIndex').textContent = `0 / ${filtered.length}`;
+        document.getElementById('focusPreview').textContent = '—';
+        document.getElementById('klarSolo').textContent = '—';
+        document.getElementById('genyoSolo').textContent = '—';
+        document.getElementById('unicodeSolo').textContent = '—';
+        document.getElementById('klarInfo').textContent = '目前篩選條件下沒有項目。';
+        document.getElementById('genyoInfo').textContent = '調整篩選後會恢復顯示。';
+        document.getElementById('unicodeInfo').textContent = '請切換篩選條件或清除決策。';
+        return;
+      }
+
+      const leftContext = leftContextInput.value || '語';
+      const rightContext = rightContextInput.value || '說';
+      const decision = decisions[current.hex];
+
+      document.getElementById('contextLeftPreview').textContent = leftContext;
+      document.getElementById('contextRightPreview').textContent = rightContext;
+      document.getElementById('focusPreview').textContent = current.char;
+      document.getElementById('klarSolo').textContent = current.char;
+      document.getElementById('genyoSolo').textContent = current.char;
+      document.getElementById('unicodeSolo').textContent = current.char;
+      document.getElementById('badgeHex').textContent = current.hex;
+      document.getElementById('badgeIndex').textContent = `${currentIndex + 1} / ${filtered.length}`;
+      document.getElementById('badgeBlock').textContent = current.block || 'Unknown block';
+      document.getElementById('badgePlane').textContent = current.plane || 'Unknown plane';
+      document.getElementById('klarInfo').textContent = `KlarMin glyph: ${current.klarmin_name || 'n/a'}`;
+      document.getElementById('unicodeInfo').textContent = `${current.hex} · ${current.block || 'Unknown block'} · ${current.plane || 'Unknown plane'}`;
+
+      const genyoBadge = document.getElementById('badgeGenYo');
+      const genyoBadgeText = genyoBadge.querySelector('span');
+      if (current.in_genyo) {
+        genyoBadge.className = 'meta-badge genyo-yes';
+        genyoBadgeText.textContent = `GenYoMin 有此字${current.genyo_name ? ` · ${current.genyo_name}` : ''}`;
+        document.getElementById('genyoInfo').textContent = `GenYoMin glyph: ${current.genyo_name || 'exists'}`;
+      } else {
+        genyoBadge.className = 'meta-badge genyo-no';
+        genyoBadgeText.textContent = 'GenYoMin 未收錄此字';
+        document.getElementById('genyoInfo').textContent = '這個缺字在 GenYoMin2 TW R 沒有對應 glyph。';
+      }
+
+      setDecisionBadge(decision);
+    }
+
+    function step(delta) {
+      currentIndex += delta;
+      clampIndex();
+      render();
+    }
+
+    function setFilter(mode) {
+      filterMode = mode;
+      currentIndex = 0;
+      localStorage.setItem(STORAGE.filter, filterMode);
+      localStorage.setItem(STORAGE.index, String(currentIndex));
+      render();
+    }
+
+    function makeDecision(type) {
+      const current = getCurrentChar();
+      if (!current) return;
+      decisions[current.hex] = type;
+      persistDecisionState();
+      if (filterMode === 'undecided') {
+        render();
+        return;
+      }
+      if (currentIndex < getFilteredChars().length - 1) {
+        currentIndex += 1;
+      }
+      clampIndex();
+      render();
+    }
+
+    function clearDecision() {
+      const current = getCurrentChar();
+      if (!current) return;
+      delete decisions[current.hex];
+      persistDecisionState();
+      render();
+    }
+
+    function jumpToUndecided() {
+      filterMode = 'undecided';
+      currentIndex = 0;
+      localStorage.setItem(STORAGE.filter, filterMode);
+      localStorage.setItem(STORAGE.index, '0');
+      render();
+    }
+
+    function jumpToIndex() {
+      const raw = Number(document.getElementById('jumpIndex').value);
+      if (!Number.isFinite(raw)) return;
+      currentIndex = raw - 1;
+      clampIndex();
+      render();
+    }
+
+    function exportData() {
+      const payload = JSON.stringify(decisions, null, 2);
+      const blob = new Blob([payload], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'review_decisions.json';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function resetProgress() {
+      const confirmed = window.confirm('要清除目前這個頁面的 LocalStorage 決策與 specimen 設定嗎？');
+      if (!confirmed) return;
+      Object.values(STORAGE).forEach((key) => localStorage.removeItem(key));
+      decisions = {};
+      filterMode = 'all';
+      currentIndex = 0;
+      leftContextInput.value = '語';
+      rightContextInput.value = '說';
+      specimenInput.value = DEFAULT_SPECIMEN;
+      specimenSizeInput.value = 24;
+      specimenLineHeightInput.value = 1.9;
+      updateSpecimen();
+      render();
+    }
+
+    function resetSpecimenText() {
+      specimenInput.value = DEFAULT_SPECIMEN;
+      updateSpecimen();
+    }
+
+    document.querySelectorAll('.chip').forEach((chip) => {
+      chip.addEventListener('click', () => setFilter(chip.dataset.filter));
+    });
+
+    leftContextInput.addEventListener('input', () => {
+      localStorage.setItem(STORAGE.leftContext, leftContextInput.value);
+      render();
+    });
+
+    rightContextInput.addEventListener('input', () => {
+      localStorage.setItem(STORAGE.rightContext, rightContextInput.value);
+      render();
+    });
+
+    specimenInput.addEventListener('input', updateSpecimen);
+    specimenSizeInput.addEventListener('input', updateSpecimen);
+    specimenLineHeightInput.addEventListener('input', updateSpecimen);
+
+    document.addEventListener('keydown', (event) => {
+      const activeTag = document.activeElement && document.activeElement.tagName;
+      if (activeTag === 'INPUT' || activeTag === 'TEXTAREA') return;
+      if (event.key === 'ArrowLeft') step(-1);
+      if (event.key === 'ArrowRight') step(1);
+      if (event.key === '1') makeDecision('reject');
+      if (event.key === '2') makeDecision('edit');
+      if (event.key === '3') makeDecision('copy');
+      if (event.key === '0') clearDecision();
+      if (event.key.toLowerCase() === 'u') jumpToUndecided();
+      if (event.key.toLowerCase() === 'e') exportData();
+    });
+
+    if (!chars.length) {
+      document.getElementById('emptyState').hidden = false;
+      document.getElementById('emptyState').textContent = '找不到 ../reports/missing_chars_data.js，請先執行 tools/export_missing_cjk.py。';
+    }
+
+    updateSpecimen();
+    render();
+  </script>
+</body>
+</html>
