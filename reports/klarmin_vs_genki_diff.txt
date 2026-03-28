@@ -1,0 +1,44 @@
+Comparison Report: KlarMinTC v9 vs GenKiMin2TW-R
+=================================================
+
+Total glyphs mapped in KlarMinTC v9: 16770
+Total glyphs mapped in GenKiMin2TW-R: 35349
+
+Codepoints in GenKiMin but missing in KlarMin (Top 10): 19041 total
+  - CJK Unified Ideographs: 7513
+  - CJK Unified Ideographs Ext A: 6318
+  - Hangul Syllables: 2350
+  - CJK Unified Ideographs Ext B: 1790
+  - Other: 670
+  - CJK Compatibility Ideographs: 266
+  - CJK Compatibility Ideographs Supp: 51
+  - CJK Unified Ideographs Ext D: 34
+  - Basic Latin: 30
+  - CJK Unified Ideographs Ext F: 5
+  - CJK Unified Ideographs Ext G: 5
+  - CJK Unified Ideographs Ext C: 4
+  - CJK Unified Ideographs Ext E: 4
+  - Halfwidth and Fullwidth Forms: 1
+
+Codepoints in KlarMin but missing in GenKiMin: 462 total
+Includes: (Showing up to 20)
+  U+0104 Ą 
+  U+0105 ą 
+  U+0106 Ć 
+  U+0107 ć 
+  U+0108 Ĉ 
+  U+0109 ĉ 
+  U+010A Ċ 
+  U+010B ċ 
+  U+010C Č 
+  U+010D č 
+  U+010E Ď 
+  U+010F ď 
+  U+0116 Ė 
+  U+0117 ė 
+  U+0118 Ę 
+  U+0119 ę 
+  U+011C Ĝ 
+  U+011D ĝ 
+  U+011E Ğ 
+  U+011F ğ 

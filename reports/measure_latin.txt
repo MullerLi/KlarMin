@@ -1,0 +1,7 @@
+--- d:\OneDrive\project\UDminchoModified\BIZUDPMincho-SourceSerifMix-Regular.ttf ---
+Char 'H' (U+0048): xMin=98, xMax=1766, yMin=0, yMax=1567 | Width=1668, Height=1567
+Char 'x' (U+0078): xMin=28, xMax=1235, yMin=0, yMax=1125 | Width=1207, Height=1125
+Char 'A' (U+0041): xMin=19, xMax=1562, yMin=0, yMax=1579 | Width=1543, Height=1579
+Char '国' (U+56FD): xMin=190, xMax=1907, yMin=-176, yMax=1665 | Width=1717, Height=1841
+Char '中' (U+4E2D): xMin=252, xMax=1852, yMin=-175, yMax=1689 | Width=1600, Height=1864
+Char 'g' (U+0067): xMin=82, xMax=1183, yMin=-559, yMax=1158 | Width=1101, Height=1717

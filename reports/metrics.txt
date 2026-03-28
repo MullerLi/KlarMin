@@ -1,0 +1,18 @@
+--- d:\OneDrive\project\UDminchoModified\referenceFont\BIZUDPMincho-Regular.ttf ---
+UPM: 2048
+OS/2 TypoA/D/L: 1802 / -246 / 0
+OS/2 WinA/D: 1802 / 246
+hhea A/D/L: 1802 / -246 / 0
+OS/2 xHeight: 1108, CapHeight: 1567
+--- d:\OneDrive\project\UDminchoModified\KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf ---
+UPM: 2048
+OS/2 TypoA/D/L: 2014 / -560 / 0
+OS/2 WinA/D: 2014 / 560
+hhea A/D/L: 2014 / -560 / 0
+OS/2 xHeight: 1108, CapHeight: 1567
+--- C:\Users\Administrator\Downloads\Lato,Source_Serif_4,TASA_Explorer,TASA_Orbiter\Source_Serif_4\static\SourceSerif4_18pt-Regular.ttf ---
+UPM: 1000
+OS/2 TypoA/D/L: 1036 / -335 / 0
+OS/2 WinA/D: 1009 / 324
+hhea A/D/L: 1036 / -335 / 0
+OS/2 xHeight: 475, CapHeight: 670
