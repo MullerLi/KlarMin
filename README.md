@@ -1,6 +1,10 @@
 # UDminchoModified
 
-這個專案是在 BLZ UD 明朝體增補成適合繁中與中西文混排的字型
+We aim to development a highly readling-friendly on monitor and e-book reader Traditional Chinese 宋體 font by modified BIZ UD mincho.
+
+This font is made of BIZ UD mincho and Source Serif 4.
+
+![KlarMin Display](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/125B/UDminchoModified/display.JPG)
 
 - 根目錄只放最新版本的成品字型
 - 參考字型集中放在 `referenceFont`
@@ -77,5 +81,3 @@ python tools\audit_font_coverage.py --target KlarMinTC-Regular-GenKiMerriMix-Ita
 - `log.md`：給後續 agent / 自動化工作流快速接手專案歷程
 
 如果你是要直接繼續開發、補字、改流程，請先看 `log.md`。
-
-![KlarMin Display](display.JPG)
