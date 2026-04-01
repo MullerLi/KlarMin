@@ -27,18 +27,28 @@
       font-family: 'BIZReview';
       src: url('../BIZUDPMincho-SourceSerifMix-Regular.ttf') format('truetype');
       font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
     @font-face {
       font-family: 'KlarReview';
       src: url('../KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf') format('truetype');
       font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
     @font-face {
       font-family: 'GenYoReview';
-      src: url('../referenceFont/GenYoMin2TW-R.ttf') format('truetype');
+      src:
+        local('GenYoMin2 TW R'),
+        local('GenYoMin2TW-R'),
+        local('源樣明體月 R'),
+        url('../referenceFont/GenYoMin2TW-R.ttf') format('truetype');
       font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
 
     body {
@@ -214,7 +224,7 @@
     }
 
     textarea {
-      min-height: 190px;
+      min-height: 136px;
       resize: vertical;
       line-height: 1.65;
     }
@@ -297,14 +307,33 @@
       justify-content: center;
     }
 
-    .font-biz { font-family: "BIZReview", serif; }
-    .font-klar { font-family: "KlarReview", serif; }
-    .font-genyo { font-family: "GenYoReview", serif; }
+    .font-biz {
+      font-family: "BIZReview", serif;
+      font-synthesis: none;
+    }
+
+    .font-klar {
+      font-family: "KlarReview", serif;
+      font-synthesis: none;
+    }
+
+    .font-genyo {
+      font-family: "GenYoReview", "GenYoMin2 TW R", "源樣明體月 R", serif;
+      font-synthesis: none;
+    }
 
     .focus-char {
       color: var(--accent);
       border-bottom: 5px solid rgba(20, 92, 74, 0.18);
       padding: 0 0.04em 0.05em;
+    }
+
+    .glyph-missing {
+      font-family: "Aptos", "Microsoft JhengHei", "PingFang TC", sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #8d6d4d;
     }
 
     .preview-grid {
@@ -370,6 +399,20 @@
       line-height: 1.5;
     }
 
+    .decision-note {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(120, 90, 60, 0.12);
+      background: rgba(255, 251, 243, 0.88);
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.94rem;
+    }
+
+    .decision-note strong {
+      color: var(--ink);
+    }
+
     .decision-copy { border-color: rgba(24, 121, 78, 0.18); }
     .decision-edit { border-color: rgba(193, 122, 35, 0.18); }
     .decision-reject { border-color: rgba(154, 59, 44, 0.18); }
@@ -402,7 +445,7 @@
     }
 
     .specimen {
-      margin-top: 18px;
+      margin-top: 12px;
       padding: 22px;
       display: grid;
       gap: 18px;
@@ -448,9 +491,21 @@
     }
 
     .specimen-grid {
+      align-content: start;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+    }
+
+    .specimen-body {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.42fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .specimen-editor {
+      margin: 0;
     }
 
     .specimen-card {
@@ -484,7 +539,7 @@
       white-space: pre-wrap;
       word-break: break-word;
       margin: 0;
-      padding: 18px;
+      padding: 16px 18px;
       border-radius: 16px;
       background: rgba(250, 244, 232, 0.72);
       border: 1px dashed rgba(120, 90, 60, 0.16);
@@ -505,6 +560,7 @@
       .workspace,
       .preview-grid,
       .decision-grid,
+      .specimen-body,
       .specimen-grid {
         grid-template-columns: 1fr;
       }
@@ -622,20 +678,27 @@
         <div class="decision-grid">
           <button class="decision decision-reject" type="button" onclick="makeDecision('reject')">
             <strong>❌ 捨棄</strong>
-            <span>不進合流，保留缺字狀態。</span>
+            <span>新字體保留 BIZ 原樣，這一字不會帶入 KlarMin 或 GenYoMin。</span>
           </button>
           <button class="decision decision-edit" type="button" onclick="makeDecision('edit')">
             <strong>🛠️ 需修改</strong>
-            <span>骨架可借，但還要進 FontForge 修筆形。</span>
+            <span>先列入人工修字清單；目前自動輸出也不會帶入任何來源字形。</span>
           </button>
           <button class="decision decision-copy" type="button" onclick="makeDecision('copy')">
             <strong>✅ 直接合併</strong>
-            <span>高度、粗細、調性都可直接打包。</span>
+            <span>目前 merge 腳本會把 KlarMin 這個字複製進新的 BIZ 字體，GenYoMin 僅供對照。</span>
           </button>
           <button class="decision decision-clear" type="button" onclick="clearDecision()">
             <strong>↺ 清除此筆</strong>
-            <span>把目前這個字退回未決狀態。</span>
+            <span>移除這筆決策，匯出 JSON 不帶它；新字體也不會新增這個字。</span>
           </button>
+        </div>
+
+        <div class="decision-note">
+          <strong>目前自動合流規則：</strong>
+          只有「直接合併」會被 <code>tools/merge_approved_cjk.py</code> 讀取，而且來源固定是
+          <code>KlarMinTC-Regular-GenKiMerriMix-PunctFix-v9-symbolfix.ttf</code>。
+          上方的 GenYoMin 區塊是比對參考，不會直接寫入輸出字體。
         </div>
 
         <div class="hotkeys">
@@ -671,26 +734,28 @@
         </div>
       </div>
 
-      <label>可編輯內文
-        <textarea id="specimenInput"></textarea>
-      </label>
+      <div class="specimen-body">
+        <label class="specimen-editor">可編輯內文
+          <textarea id="specimenInput"></textarea>
+        </label>
 
-      <div class="specimen-grid">
-        <article class="specimen-card">
-          <header>
-            <h3>BIZ UDPMincho</h3>
-            <span>目前工作字型</span>
-          </header>
-          <pre class="specimen-copy font-biz" id="bizSpecimen"></pre>
-        </article>
+        <div class="specimen-grid">
+          <article class="specimen-card">
+            <header>
+              <h3>BIZ UDPMincho</h3>
+              <span>目前工作字型</span>
+            </header>
+            <pre class="specimen-copy font-biz" id="bizSpecimen"></pre>
+          </article>
 
-        <article class="specimen-card">
-          <header>
-            <h3>GenYoMin2 TW R</h3>
-            <span>參考字體</span>
-          </header>
-          <pre class="specimen-copy font-genyo" id="genyoSpecimen"></pre>
-        </article>
+          <article class="specimen-card">
+            <header>
+              <h3>GenYoMin2 TW R</h3>
+              <span>參考字體</span>
+            </header>
+            <pre class="specimen-copy font-genyo" id="genyoSpecimen"></pre>
+          </article>
+        </div>
       </div>
     </section>
   </div>
@@ -837,6 +902,7 @@ tools/cjk_review_app.html
         document.getElementById('badgeIndex').textContent = `0 / ${filtered.length}`;
         document.getElementById('focusPreview').textContent = '—';
         document.getElementById('klarSolo').textContent = '—';
+        document.getElementById('genyoSolo').classList.remove('glyph-missing');
         document.getElementById('genyoSolo').textContent = '—';
         document.getElementById('unicodeSolo').textContent = '—';
         document.getElementById('klarInfo').textContent = '目前篩選條件下沒有項目。';
@@ -853,7 +919,6 @@ tools/cjk_review_app.html
       document.getElementById('contextRightPreview').textContent = rightContext;
       document.getElementById('focusPreview').textContent = current.char;
       document.getElementById('klarSolo').textContent = current.char;
-      document.getElementById('genyoSolo').textContent = current.char;
       document.getElementById('unicodeSolo').textContent = current.char;
       document.getElementById('badgeHex').textContent = current.hex;
       document.getElementById('badgeIndex').textContent = `${currentIndex + 1} / ${filtered.length}`;
@@ -864,14 +929,19 @@ tools/cjk_review_app.html
 
       const genyoBadge = document.getElementById('badgeGenYo');
       const genyoBadgeText = genyoBadge.querySelector('span');
+      const genyoSolo = document.getElementById('genyoSolo');
       if (current.in_genyo) {
         genyoBadge.className = 'meta-badge genyo-yes';
+        genyoSolo.classList.remove('glyph-missing');
+        genyoSolo.textContent = current.char;
         genyoBadgeText.textContent = `GenYoMin 有此字${current.genyo_name ? ` · ${current.genyo_name}` : ''}`;
         document.getElementById('genyoInfo').textContent = `GenYoMin glyph: ${current.genyo_name || 'exists'}`;
       } else {
         genyoBadge.className = 'meta-badge genyo-no';
+        genyoSolo.classList.add('glyph-missing');
+        genyoSolo.textContent = '未收錄';
         genyoBadgeText.textContent = 'GenYoMin 未收錄此字';
-        document.getElementById('genyoInfo').textContent = '這個缺字在 GenYoMin2 TW R 沒有對應 glyph。';
+        document.getElementById('genyoInfo').textContent = '這個缺字在 GenYoMin2 TW R 沒有對應 glyph，因此不再顯示瀏覽器 fallback 字形。';
       }
 
       setDecisionBadge(decision);
